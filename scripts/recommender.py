@@ -1,3 +1,10 @@
+"""
+Recommend funds based on risk appetite
+using Sharpe Ratio ranking.
+"""
+
+
+
 import pandas as pd
 import numpy as np
 nav = pd.read_csv("Data/Processed/02_nav_history_cleaned.csv")
@@ -55,11 +62,13 @@ def recommend_funds(risk_appetite):
         ]
         .head(3)
     )
-print("\nLow Risk Funds")
-print(recommend_funds("Low"))
 
-print("\nModerate Risk Funds")
-print(recommend_funds("Moderate"))
+if __name__ == "__main__":
+    print("\nLow Risk Funds")
+    print(recommend_funds("Low"))
 
-print("\nHigh Risk Funds")
-print(recommend_funds("High"))
+    print("\nModerate Risk Funds")
+    print(recommend_funds("Moderate"))
+
+    print("\nHigh Risk Funds")
+    print(recommend_funds("High"))

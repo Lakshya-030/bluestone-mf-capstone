@@ -1,2 +1,5 @@
 *.db
 Data/db/
+
+__pycache__/
+*.pyc

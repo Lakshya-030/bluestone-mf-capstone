@@ -1,3 +1,10 @@
+"""
+Compute financial metrics such as VaR, CVaR, Sharpe Ratio,
+and HHI for mutual fund analysis.
+"""
+
+
+
 import pandas as pd
 import numpy as np
 

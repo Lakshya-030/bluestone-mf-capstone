@@ -1,29 +1,34 @@
-import pandas as pd
-import requests 
-url="https://api.mfapi.in/mf/125497"
-response = requests.get(url)
-response.status_code
-data = response.json()
-type(data)
-data.keys()
-data['meta']
-Nav_df = pd.DataFrame(data['data'])
-Nav_df.head()
-Nav_df.to_csv("Data/Raw/live_nav_125497.csv",index=False)
+"""
+Fetch live NAV data from MFAPI.
+"""
 
-def Fetch_Nav(amfi_code):
+import pandas as pd
+import requests
+
+
+def fetch_nav(amfi_code):
+
     url = f"https://api.mfapi.in/mf/{amfi_code}"
 
     response = requests.get(url)
-    data=response.json()
-    Nav_Df = pd.DataFrame(data['data'])
-    Nav_Df.to_csv(f"Data/Raw/Nav_{amfi_code}.csv",index=False)
+    data = response.json()
+
+    nav_df = pd.DataFrame(data["data"])
+
+    nav_df.to_csv(
+        f"Data/Raw/Nav_{amfi_code}.csv",
+        index=False
+    )
 
     print(f"Saved NAV data for {amfi_code}")
 
-    return Nav_Df.head()
-Fetch_Nav(119551)
-Fetch_Nav(120503)
-Fetch_Nav(118632)
-Fetch_Nav(119092)
-Fetch_Nav(120841)
+    return nav_df
+
+
+if __name__ == "__main__":
+
+    fetch_nav(119551)
+    fetch_nav(120503)
+    fetch_nav(118632)
+    fetch_nav(119092)
+    fetch_nav(120841)
